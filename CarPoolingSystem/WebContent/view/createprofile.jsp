@@ -17,6 +17,7 @@
 	<input type="radio" name="gender" value="1">Male
 	<input type="radio" name="gender" value="0">Female<br>
 	State:<input type="text" name="state"><br>
+	City:<input type="text" name="city"><br>
 	Street:<input type="text" name="street"><br>
 	Zip Code:<input type="text" name="zipcode"><br>
 	Bithr year:<input type="text" name="birthyear" pattern=""><br>
@@ -24,7 +25,7 @@
 	Password:<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"><br>
 	Confirm password:<input type="password" name="confirmpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"><br>
 	<input type="button" id="btnprofile" name="btnprofile" value="Submit">
-	<input type="reset" name="reset" value="Reset">
+	<input type="reset" id="btnreset"  name="btnreset" value="Reset">
 	</form>
 </body>
 </html>

@@ -179,12 +179,12 @@ public class DBUtil {
 		StringBuffer sqlBufferField = new StringBuffer("(");
 		StringBuffer sqlBufferValue = new StringBuffer(" value(");
 				
-        for(int j=0 ; j<field.length ; j++){     	// 
+        for(int j=1 ; j<field.length ; j++){     	// 
               String name = field[j].getName();    	//get attribute
               field[j].setAccessible(true);
               Object value = field[j].get(model);
               String methodType = field[j].getGenericType().toString(); 
-              System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
+              //System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
               //name = name.substring(0,1).toUpperCase()+name.substring(1); // 
               methodType = methodType.replace("class ", "");
               //System.out.println("=>:"+methodType);
@@ -218,7 +218,7 @@ public class DBUtil {
         }
         sqlBufferHead.append(sqlBufferField);
         sqlBufferHead.append(sqlBufferValue);
-        System.out.println("generInsertString:"+sqlBufferHead.toString());
+        //System.out.println("generInsertString:"+sqlBufferHead.toString());
         return sqlBufferHead.toString();
     }
     

@@ -49,7 +49,7 @@ public class DataAccess<T> {
 	        ResultSet rs = null;
 	        try{
 	        	Statement stmt = connection.createStatement();
-	            System.out.println("the query: " + sql);
+	            System.out.println(this.getClass().getSimpleName()+" the query: " + sql);
 	          	rs = stmt.executeQuery(sql);
 	          	/*
 	            while (rs.next()) {
@@ -71,8 +71,13 @@ public class DataAccess<T> {
         boolean result = false;
         try{
         	Statement stmt = connection.createStatement();
-            System.out.println("the execute: " + sql);
-            result = stmt.execute(sql);
+            System.out.println(this.getClass().getSimpleName()+" the execute: " + sql);
+            //result = stmt.execute(sql);
+            stmt.execute(sql);
+            int i = stmt.getUpdateCount();
+            if (i>0){
+            	result = true;
+            }
             //stmt.close();
         } catch (SQLException s) {
             System.out.println("Exception thrown in retrieveUser ....");
@@ -90,7 +95,7 @@ public class DataAccess<T> {
 			sqlBuffer.append(" "+tableName+" ");
 			if (m.size() != 0){
 				 String paramterString = DBUtil.mapConvertParamterString(m);
-				 System.out.println("paramterString:"+paramterString);
+				 System.out.println(this.getClass().getSimpleName()+" paramterString:"+paramterString);
 				 sqlBuffer.append(paramterString);
 			}
     		ResultSet rs = this.executeQuery(sqlBuffer.toString());
@@ -112,7 +117,7 @@ public class DataAccess<T> {
 			StringBuffer  sqlBuffer = new StringBuffer("select * from ");
 			sqlBuffer.append(" "+tableName+" ");
 			if (!StringUtils.isNullOrEmpty(sqlParamter) ){
-				 System.out.println("paramterString:"+sqlParamter);
+				 System.out.println(this.getClass().getSimpleName()+" paramterString:"+sqlParamter);
 				 sqlBuffer.append(sqlParamter);
 			}
     		ResultSet rs = this.executeQuery(sqlBuffer.toString());
@@ -224,7 +229,7 @@ public class DataAccess<T> {
 	              field[j].setAccessible(true);
 	              Object value = field[j].get(model);
 	              String methodType = field[j].getGenericType().toString(); 
-	              System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
+	              //System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
 	              //name = name.substring(0,1).toUpperCase()+name.substring(1); // 
 	              methodType = methodType.replace("class ", "");
 	              //System.out.println("=>:"+methodType);
