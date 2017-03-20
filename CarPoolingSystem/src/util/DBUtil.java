@@ -187,7 +187,7 @@ public class DBUtil {
               System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
               //name = name.substring(0,1).toUpperCase()+name.substring(1); // 
               methodType = methodType.replace("class ", "");
-              System.out.println("=>:"+methodType);
+              //System.out.println("=>:"+methodType);
             
               if (value != null && !value.equals("")) {
             	  	sqlBufferField.append(name);

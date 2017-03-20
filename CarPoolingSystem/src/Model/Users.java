@@ -5,7 +5,7 @@ public class Users {
 	private int userid;
 	
 	private String fullname;
-	private int gender;
+	private int gender;//male 1    female 0
 	private String state;
 	private String city;
 	private String street;

@@ -29,8 +29,10 @@ public class DataAccess<T> {
 	public static synchronized  Connection getConection(){
 		if (connection == null){
 			try {
+				Class.forName("com.mysql.jdbc.Driver");
 				connection = DriverManager.getConnection(dburl, DBNAME_STRING,DBNAME_P_STRING);
-			} catch (SQLException e) {
+				System.out.println("connection ok");
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -126,7 +128,8 @@ public class DataAccess<T> {
 	public boolean  add ( T t ){ //p1 is like user, post,Likes Comment; p2 filter map  
 		boolean result = false;
 		try {
-			//result = this.execute(sqlBuffer.toString());
+			String sqlBuffer = DBUtil.generInsertString(t);
+			result = this.execute(sqlBuffer.toString());
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -224,7 +227,7 @@ public class DataAccess<T> {
 	              System.out.println("attribute:"+name +"|value:"+value +"|type:"+methodType); 
 	              //name = name.substring(0,1).toUpperCase()+name.substring(1); // 
 	              methodType = methodType.replace("class ", "");
-	              System.out.println("=>:"+methodType);
+	              //System.out.println("=>:"+methodType);
 	            
 	              if (value != null && !value.equals("")) {
 	  					if (numberTypes.contains(methodType)) {
