@@ -1,5 +1,7 @@
 package business;
 
+import java.util.List;
+
 import com.google.gson.JsonObject;
 
 import util.JsonUtil;
@@ -26,5 +28,27 @@ public class UserBusiness {
 		result.addProperty("result", executeResult);
 		return result;
 	}
+	
+	public Users finduser(String username, String password){
+		String sqlCondition = " where email ='"+username+"' and  password='"+password+"'";
+		//select * from  USERS  where email ='123' and password='123';
+		Users u = null ;
+		//u.setEmail(username);
+		//u.setPassword(password);
+		DataAccess ds = new DataAccess();
+		List<Users> users = (List)ds.search( new Users(), sqlCondition);
+		if (users.size()>1){
+			//you have too many user to match;
+			
+		}else if (users.size()==0){
+			//no mathc users 
+		}else if (users.size()==1){
+			//match user
+			u = users.get(0);
+		} 
+		
+		return u;
+		
+	} 
 	
 }
