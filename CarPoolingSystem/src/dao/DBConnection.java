@@ -8,7 +8,7 @@ public class DBConnection {
 
 	static String dburl = "jdbc:mysql://localhost:3306/carpoolingdb";
 	
-	static Connection con ;
+	static Connection con ;//
 			
 	public static Connection getConection(){
 		
