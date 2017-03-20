@@ -89,6 +89,7 @@ public class Profile extends HttpServlet {
 			clz = Class.forName(className);
 			Object obj = clz.newInstance();
 			Method m = obj.getClass().getDeclaredMethod(methodName, String.class);
+			System.out.println(this.getClass().getSimpleName()+"|parameters:"+parameters);
 			result = (JsonObject) m.invoke(obj, parameters);
 			System.out.println(result);
 		} catch (Exception e) {

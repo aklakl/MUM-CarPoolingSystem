@@ -5,10 +5,12 @@
 
 $(document).ready(function(){
   $("#btnprofile").on("click",fn_submit);
-  $("#btnprofile").on("click",fn_submit);
-  init();	
+  $("#btnSaveprofile").on("click",fn_Saveprofile);
+  
 });
+
 gObject = {};
+init();
 function init(){
 	gObject.hostIp=window.location.host;
 	gObject.hostPort=window.location.port;
@@ -64,5 +66,22 @@ function fn_submit_success(data, textStatus, jqXHR){
 	}else{
 		alert("add the user failed");  
 	}
+}
+
+function fn_Saveprofile(){
+	console.log("fn_Saveprofile:"+data);
+	if (data.result){
+		alert("add the user success"); 
+		window.location.href=gObject.url; 
+	}else{
+		alert("add the user failed");  
+	}
+}
+
+
+
+function fn_fetchDataInUpdateProfile(data, textStatus, jqXHR){
+	console.log("fn_submit_success:"+data);
 	
+	//$();
 }
