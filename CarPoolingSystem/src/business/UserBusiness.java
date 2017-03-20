@@ -2,11 +2,12 @@ package business;
 
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import util.JsonUtil;
 import Model.Users;
 import dao.DataAccess;
+import util.JsonUtil;
 
 public class UserBusiness {
 
@@ -19,12 +20,38 @@ public class UserBusiness {
 
 	}
 
+	//modify by mingli
 	public JsonObject addUser(String jsonStr) {
 		JsonObject result = new JsonObject();
-		System.out.println("addUser jsonStr:"+jsonStr);
 		DataAccess<Users> dataAccess = new DataAccess<Users>();
 		Users users = (Users)JsonUtil.JSONToObject(jsonStr, Users.class); 
 		boolean executeResult = dataAccess.add(users);
+		result.addProperty("result", executeResult);
+		return result;
+	}
+	
+	public JsonObject searchUser(String jsonStr) {
+		JsonObject result = new JsonObject();
+		DataAccess<Users> dataAccess = new DataAccess<Users>();
+		JsonObject jparamters =  JsonUtil.jsonStringToJsonObject(jsonStr);
+		String sqlParamter = "";
+		if (jparamters.get("sqlParamter")!=null){
+			sqlParamter = jparamters.get("sqlParamter").toString();
+		}
+		List<Users> list = (List<Users>)dataAccess.search(new Users(),sqlParamter );
+		Gson gson = new Gson();
+		String str = gson.toJson(list);
+		result.addProperty("datalist", str);
+		result.addProperty("result", "ok");
+		result.addProperty("count", list.size());
+		return result;
+	}
+	
+	public JsonObject saveUser(String jsonStr) {
+		JsonObject result = new JsonObject();
+		DataAccess<Users> dataAccess = new DataAccess<Users>();
+		Users users = (Users)JsonUtil.JSONToObject(jsonStr, Users.class); 
+		boolean executeResult = dataAccess.update(users);
 		result.addProperty("result", executeResult);
 		return result;
 	}
