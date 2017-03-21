@@ -1,3 +1,6 @@
+
+
+
 -- phpMyAdmin SQL Dump
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
@@ -131,7 +134,7 @@ ALTER TABLE `users`
 --
 -- 在导出的表使用AUTO_INCREMENT
 --
-
+alter table posts change postid postid int(11) not null AUTO_INCREMENT;
 --
 -- 使用表AUTO_INCREMENT `comments`
 --

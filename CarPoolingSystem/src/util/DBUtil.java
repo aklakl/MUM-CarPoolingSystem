@@ -190,7 +190,7 @@ public class DBUtil {
               //System.out.println("=>:"+methodType);
             
               if (value != null && !value.equals("")) {
-            	  	sqlBufferField.append(name);
+            	  	sqlBufferField.append(name+",");
   					if (numberTypes.contains(methodType)) {
   						sqlBufferValue.append(value);
 	  				} else if (methodType.equalsIgnoreCase("java.lang.Boolean")) {
@@ -206,19 +206,15 @@ public class DBUtil {
 	  				} else if (methodType.equalsIgnoreCase("char")) {
 	  					sqlBufferValue.append("'"+value+"'");
 	  				}
-  					
+  					sqlBufferValue.append(",");
   			}
-              if (j<field.length-1){
-            	  if (value != null && !value.equals("")){
-	            	  sqlBufferField.append(",");
-	            	  sqlBufferValue.append(",");
-            	  }else{
-            		  System.out.println("field.length:"+field.length);
-            	  }
-              }else{
-            	  sqlBufferField.append(")");
-            	  sqlBufferValue.append(")");
-              }
+            
+          if (j==field.length-1){
+        	  sqlBufferField = sqlBufferField.delete(sqlBufferField.length()-1, sqlBufferField.length() );
+        	  sqlBufferValue = sqlBufferValue.delete(sqlBufferValue.length()-1, sqlBufferValue.length() );
+        	  sqlBufferField.append(")");
+        	  sqlBufferValue.append(")");
+          }
               
         }
         sqlBufferHead.append(sqlBufferField);
