@@ -32,7 +32,7 @@
 <body>
 <h2>Update profile</h2>
 	<form method='post' action="someservlet">
-	<input type="text" name="userid" value="0"><br>
+	<input type="hidden" name="userid" value="0"><br>
 	<span>Full Name: </span><input type="text" name="fullname"><br><br>
 	<span>Gender</span><br>
 	<input type="radio" id="gendermale" name="gender" value="1">Male

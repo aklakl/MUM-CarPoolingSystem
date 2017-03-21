@@ -8,6 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="res/js/jquery-3.2.0.js" charset="utf-8"></script>
+<script type="text/javascript" src="res/js/profile.js" charset="utf-8"></script>
+<script type="text/javascript" src="res/js/home.js" charset="utf-8"></script>
 <title>Home Page</title>
 </head>
 <body>
@@ -27,8 +30,9 @@
 	<p>Ask for ride, offering a ride</p>
 	
 	<form action="Home" method="post">
-	<textarea rows="6" cols="50" name="txtpost" placeholder="Write a post"></textarea><br><br>
-	<input type="submit" value="submit">
+	<input type="hidden" id="txtuserid" name="userid" value="${logedinuser.userid}"><br>
+	<textarea rows="6" cols="50" id="txtpost" name="txtpost" placeholder="Write a post"></textarea><br><br>
+	<input type="button" id="btnPostMessage"  value="submit">
 	</form>
 	
 	

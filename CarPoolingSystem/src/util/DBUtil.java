@@ -206,14 +206,19 @@ public class DBUtil {
 	  				} else if (methodType.equalsIgnoreCase("char")) {
 	  					sqlBufferValue.append("'"+value+"'");
 	  				}
-  					if (j<field.length-1){
-  						sqlBufferField.append(",");
-  						sqlBufferValue.append(",");
-  					}else{
-  						sqlBufferField.append(")");
-  						sqlBufferValue.append(")");
-  					}
+  					
   			}
+              if (j<field.length-1){
+            	  if (value != null && !value.equals("")){
+	            	  sqlBufferField.append(",");
+	            	  sqlBufferValue.append(",");
+            	  }else{
+            		  System.out.println("field.length:"+field.length);
+            	  }
+              }else{
+            	  sqlBufferField.append(")");
+            	  sqlBufferValue.append(")");
+              }
               
         }
         sqlBufferHead.append(sqlBufferField);

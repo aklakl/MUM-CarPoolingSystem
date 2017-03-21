@@ -7,7 +7,7 @@ import java.util.List;
 public class Posts {
 	
 	private int postid;
-	private Users userid;
+	private int userid;
 	private String post;
 	private int posttype;
 	private List<Comments>commensts;
@@ -32,10 +32,10 @@ public class Posts {
 	public void setPostid(int postid) {
 		this.postid = postid;
 	}
-	public Users getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(Users userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public String getPost() {
