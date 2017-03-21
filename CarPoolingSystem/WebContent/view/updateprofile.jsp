@@ -13,7 +13,7 @@
 		data.businessClass = "UserBusiness";
 		data.methodName = "searchUser";
 		var parameters = {};
-		parameters.sqlParamter=" where userid=1";//${logedinuser.userid};
+		parameters.sqlParamter=' where userid=${logedinuser.userid}';//;
 		data.parameters = JSON.stringify(parameters);
 		//data.parameters = JSON.stringify(formData);
 		$.ajax({
@@ -35,8 +35,8 @@
 	<input type="text" name="userid" value="0"><br>
 	<span>Full Name: </span><input type="text" name="fullname"><br><br>
 	<span>Gender</span><br>
-	<input type="radio" name="gender" value="1">Male
-	<input type="radio" name="gender" value="0">Female<br>
+	<input type="radio" id="gendermale" name="gender" value="1">Male
+	<input type="radio" id="genderfemale" name="gender" value="0">Female<br>
 	State:<input type="text" name="state"><br>
 	City:<input type="text" name="city"><br>
 	Street:<input type="text" name="street"><br>

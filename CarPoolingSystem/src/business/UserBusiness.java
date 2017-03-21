@@ -36,7 +36,7 @@ public class UserBusiness {
 		JsonObject jparamters =  JsonUtil.jsonStringToJsonObject(jsonStr);
 		String sqlParamter = "";
 		if (jparamters.get("sqlParamter")!=null){
-			sqlParamter = jparamters.get("sqlParamter").toString();
+			sqlParamter = jparamters.get("sqlParamter").getAsString();
 		}
 		List<Users> list = (List<Users>)dataAccess.search(new Users(),sqlParamter );
 		Gson gson = new Gson();

@@ -66,7 +66,7 @@ public class DBUtil {
 		if (beanProperty.toLowerCase().equals("row_num")) {
 			return;
 		}
-		//  setterã€�getter
+		//  setter getter
 		Object[] beanObject = beanMatch(object.getClass(), beanProperty);
 		Object[] cache = new Object[1];
 		Method getter = (Method) beanObject[0];
@@ -77,7 +77,7 @@ public class DBUtil {
 				if (methodType.equalsIgnoreCase("java.lang.Long")) {
 					cache[0] = new Long(value);
 					setter.invoke(object, cache);
-				} else if (methodType.equalsIgnoreCase("java.lang.Int") || methodType.equalsIgnoreCase("java.lang.Integer")) {
+				} else if (methodType.equalsIgnoreCase("java.lang.Int") || methodType.equalsIgnoreCase("java.lang.Integer") || methodType.equalsIgnoreCase("int")) {
 					cache[0] = new Integer(value);
 					setter.invoke(object, cache);
 				} else if (methodType.equalsIgnoreCase("java.lang.Short")) {
