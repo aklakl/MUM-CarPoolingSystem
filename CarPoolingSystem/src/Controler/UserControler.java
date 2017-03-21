@@ -2,6 +2,8 @@ package Controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.Users;
-import business.UserBusiness;
+import Model.*;
+import business.*;
+
 
 
 @WebServlet("/UserControler")
@@ -62,6 +65,10 @@ public class UserControler extends HttpServlet {
 			
 			session.removeAttribute("message");
 			session.setAttribute("logedinuser", user);
+			List<Posts> post = new ArrayList<Posts>();
+			PostBusiness postBusiness = new PostBusiness();
+			post = postBusiness.findpost();
+			request.setAttribute("allpost", post);
 			//out.println(user.getFullname());
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("view/home.jsp");

@@ -1,10 +1,10 @@
 package Model;
 
-public class Comment {
+public class Comments {
 
 	private int commentid;
 	private Users userid;
-	private Post postid;
+	private Posts postid;
 	private String comment;
 	
 	
@@ -20,10 +20,10 @@ public class Comment {
 	public void setUserid(Users userid) {
 		this.userid = userid;
 	}
-	public Post getPostid() {
+	public Posts getPostid() {
 		return postid;
 	}
-	public void setPostid(Post postid) {
+	public void setPostid(Posts postid) {
 		this.postid = postid;
 	}
 	public String getComment() {
