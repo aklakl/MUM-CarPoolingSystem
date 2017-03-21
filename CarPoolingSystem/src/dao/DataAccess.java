@@ -91,6 +91,7 @@ public class DataAccess<T> {
 		Collection list = null ;
 		try {
 			String tableName = clazz.getName().toUpperCase();
+			tableName = tableName.split("\\.")[tableName.split("\\.").length-1];
 			StringBuffer  sqlBuffer = new StringBuffer("select * from ");
 			sqlBuffer.append(" "+tableName+" ");
 			if (m.size() != 0){
@@ -114,6 +115,7 @@ public class DataAccess<T> {
 		Collection list = null ;
 		try {
 			String tableName = clazz.getName().toUpperCase();
+			tableName = tableName.split("\\.")[tableName.split("\\.").length-1];
 			StringBuffer  sqlBuffer = new StringBuffer("select * from ");
 			sqlBuffer.append(" "+tableName+" ");
 			if (!StringUtils.isNullOrEmpty(sqlParamter) ){
@@ -146,7 +148,6 @@ public class DataAccess<T> {
 	
 	
 	public static void main(String[] args) throws SQLException, IllegalArgumentException, IllegalAccessException {
-		Connection connection = DBConnection.getConection();
 		Statement statement = connection.createStatement(); 
 		Likes l = new Likes(0);
 		DataAccess da = new DataAccess();
@@ -193,7 +194,6 @@ public class DataAccess<T> {
 	}
 	
 	public boolean  update ( T t  ){ //p1 is like user, post,Likes Comment; p2 filter map  
-		Connection connection = DBConnection.getConection();
 		String query = null ;
 		PreparedStatement preparedStmt; 
 		boolean result = false;
@@ -205,7 +205,11 @@ public class DataAccess<T> {
 			Statement statement = connection.createStatement(); 
 			query = generateUpdateSql(t);
 			preparedStmt =  connection.prepareStatement(query);
-			result = preparedStmt.execute();
+			preparedStmt.execute();
+			int i = preparedStmt.getUpdateCount();// modify  this bug:getUpdateCount judge the result 
+            if (i>0){
+            	result = true;
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
