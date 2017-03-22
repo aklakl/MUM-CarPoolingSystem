@@ -23,7 +23,7 @@ public class DataAccess<T> {
 	
 	private static final String dburl = "jdbc:mysql://localhost:3306/carpoolingdb";
 	private static final String DBNAME_STRING = "root";
-	private static final String DBNAME_P_STRING = "";
+	private static final String DBNAME_P_STRING = ""; // P is changed
 	private static Connection connection = getConection();
 	
 	public static synchronized  Connection getConection(){
@@ -183,10 +183,10 @@ public class DataAccess<T> {
 		Connection connection = DBConnection.getConection();
 		Statement statement = connection.createStatement(); 
 		
-		String query = "delete from " + tableName + " where " + id + " = " +  value.toString();
-		
-		PreparedStatement preparedStmt = connection.prepareStatement(query);
-		return preparedStmt.execute();
+		String sqlExecute = "delete from " + tableName + " where " + id + " = " +  value.toString();
+		return this.execute(sqlExecute);
+		//PreparedStatement preparedStmt = connection.prepareStatement(query);
+		//return preparedStmt.execute();
 		
 		//return query;
  		//delete t from tableName; //do something 
