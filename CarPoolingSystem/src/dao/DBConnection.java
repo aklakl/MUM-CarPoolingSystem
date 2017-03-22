@@ -14,7 +14,7 @@ public class DBConnection {
 		
 		if (con == null){
 			try {
-				con = DriverManager.getConnection(dburl, "root", "abc123");
+				con = DriverManager.getConnection(dburl, "root", "");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

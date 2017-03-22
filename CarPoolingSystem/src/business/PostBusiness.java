@@ -26,13 +26,21 @@ public class PostBusiness {
 		return result;
 	}
 	
+	/**
+	 * @param jsonStr
+	 * @return
+	 * eg (follow):
+	 	sourceURL: http://localhost:9983/CarPoolingSystem/Profile?businessClass=PostBusiness&methodName=searchPost&parameters="{'sqlParamter':' order by datecreated desc limit 0,3'}"
+		{"sqlParamter":" order by datecreated desc limit 0,3"}
+		encodeURL: http://localhost:9983/CarPoolingSystem/Profile?businessClass=PostBusiness&methodName=searchPost&parameters=%7B%22sqlParamter%22%3A%22%20order%20by%20datecreated%20desc%20limit%200%2C3%22%7D%0A
+	 */
 	public JsonObject searchPost(String jsonStr) {
 		JsonObject result = new JsonObject();
 		DataAccess<Posts> dataAccess = new DataAccess<Posts>();
 		JsonObject jparamters =  JsonUtil.jsonStringToJsonObject(jsonStr);
 		String sqlParamter = "";
 		if (jparamters.get("sqlParamter")!=null){
-			sqlParamter = jparamters.get("sqlParamter").toString();
+			sqlParamter = jparamters.get("sqlParamter").getAsString();
 		}
 		List<Posts> list = (List<Posts>)dataAccess.search(new Posts(),sqlParamter );
 		Gson gson = new Gson();
@@ -60,24 +68,27 @@ public class PostBusiness {
 	
 	public List<Posts> findpost(/*int userid*/){
 		String sqlCondition = "";
-		
 		List<Posts> post = new ArrayList<Posts>();
 		DataAccess ds = new DataAccess();
+		sqlCondition = "  order by datecreated desc";//desc limit 1-3:0,3  2-3:3,3    3-3:6,3
 		post = (List)ds.search( new Posts(), sqlCondition);
 		getComment(post);
+		getLikes(post);
 		return post;
-		
-	} 
+	}
 	
-	
+	public void getLikes(List<Posts> post){
+		for(Posts p : post){
+			LikeBusiness like = new LikeBusiness();
+			like.getLikeByPost(p);
+		}
+	}
 	
 	public void getComment(List<Posts> post){
 		for(Posts p : post){
 			CommentBusiness cb = new CommentBusiness();
 			cb.getCommentByPost(p);
 		}
-		
-				
 	}
 	
 	

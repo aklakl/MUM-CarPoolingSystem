@@ -43,21 +43,12 @@
 
     <!--user information-->
     <div id="wrapper">
-    <div id = "info-button2">Show<br>Info</div>
+    <div id = "info-button2"><i class="fa fa-chevron-left"></i></div>
     <div id = "info">
-      <div id = "info-button">Hide<br>Info</div>
+      <div id = "info-button"><i class="fa fa-chevron-right"></i></div>
       <div id="infowrapper">
         <h4>Profile for ______</h4>
-        <ul hidden>
-          <li>Name : Mike K.</li>
-          <li>Gender : Male</li>
-          <li>Age : 31</li>
-          <li>City : San Francisco</li>
-          <li>State : California</li>
-          <li>Zip-Code : 94080</li>
-          <li>Country : U.S.A</li>
-          <li>User Since : 2016</li>
-        </ul>
+        
       </div>
       <div id = "search">
         <!--<input type = "text" id="destination" placeholder = "Destination"/>

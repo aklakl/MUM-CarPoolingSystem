@@ -30,7 +30,8 @@ public class UserControler extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	
@@ -68,7 +69,7 @@ public class UserControler extends HttpServlet {
 			List<Posts> post = new ArrayList<Posts>();
 			PostBusiness postBusiness = new PostBusiness();
 			post = postBusiness.findpost();
-			request.setAttribute("allpost", post);
+			session.setAttribute("allpost", post);
 			//out.println(user.getFullname());
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("view/home.jsp");

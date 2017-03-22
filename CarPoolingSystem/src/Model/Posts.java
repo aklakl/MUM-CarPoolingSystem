@@ -1,7 +1,6 @@
 package Model;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Posts {
@@ -10,8 +9,10 @@ public class Posts {
 	private int userid;
 	private String post;
 	private int posttype;
+	private Date datecreated;
+	private Date dateupdated;
 	private List<Comments>commensts;
-	//private LocalDate date;
+	private List<Likes> likes;
 	
 	/*public LocalDate getDate() {
 		
@@ -50,5 +51,23 @@ public class Posts {
 	public void setPosttype(int posttype) {
 		this.posttype = posttype;
 	}
-	
+	public Date getDatecreated() {
+		return datecreated;
+	}
+	public void setDatecreated(Date datecreated) {
+		this.datecreated = datecreated;
+	}
+	public Date getDateupdated() {
+		return dateupdated;
+	}
+	public void setDateupdated(Date dateupdated) {
+		this.dateupdated = dateupdated;
+	}
+	public List<Likes> getLikes() {
+		return likes;
+	}
+	public void setLikes(List<Likes> likes) {
+		this.likes = likes;
+	}
+ 
 }

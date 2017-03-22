@@ -17,7 +17,7 @@ function init(){
 	gObject.hostPort=window.location.port;
 	gObject.projectName="CarPoolingSystem";
 	gObject.url = "http://"+gObject.hostIp+"/"+gObject.projectName;
-	gObject.indexPage = gObject.url+"/UserControler";
+	gObject.indexPage = gObject.url+"/view/home.jsp";
 }
 
 
@@ -61,13 +61,37 @@ function fn_click_submit(){
 function fn_submit_success(data, textStatus, jqXHR){
 	console.log("fn_submit_success:"+data);
 	if (data.result){
-		alert("add the user success"); 
-		window.location.href = gObject.indexPage;//gObject.url; 
+		alert("add the user success");
+		fn_loginSystem($("#email").val(),$("#password").val());
 	}else{
 		alert("add the user failed");  
 	}
 }
 
+function fn_loginSystem(userAccount,password){
+	var data = {};
+	data.txtusername = userAccount;
+	data.password = password;
+	document.write("<form action='"+gObject.url+"/UserControler' method=post name=form1 style='display:none' >");  
+	document.write("<input name='txtusername' value='"+userAccount+"' />");
+	document.write("<input name='password' value='"+password+"' />");   
+	document.write("</form>");    
+	document.form1.submit(); 
+	
+	
+	//window.location.href = gObject.url+"/UserControler?txtusername="+userAccount+"&password="+password;//gObject.url;  
+	/*
+	$.ajax({
+	  type		: 'POST',
+	  url		: gObject.url+"/UserControler",
+	  data		: data,
+	  success	: function(){
+		  window.location.href = gObject.indexPage;//gObject.url;   
+	  },
+	  dataType	: "json"
+	});
+	*/
+}
 
 
 function fn_click_Saveprofile(){

@@ -12,6 +12,7 @@
         });
         
   $(document).ready(function(){
+	  
     $.get("http://api.openweathermap.org/data/2.5/weather", 
      {"zip":"52557","APPID":"a81b4671a45c3965a6f5281447d75847"})
      .done(successful)

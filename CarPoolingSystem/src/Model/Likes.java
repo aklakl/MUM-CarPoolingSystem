@@ -3,8 +3,13 @@ package Model;
 public class Likes {
 
 	private int likeid;
-	private Users userid;
+	private int userid;
 	private int postid; // private Post postid;
+	
+	public Likes() {
+		
+	}
+	
 	
 	public Likes(int likeid) {
 		this.likeid = likeid;
@@ -17,10 +22,10 @@ public class Likes {
 	public void setLikeid(int likeid) {
 		this.likeid = likeid;
 	}
-	public Users getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(Users userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public int getPostid() {

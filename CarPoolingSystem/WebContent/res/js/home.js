@@ -19,7 +19,7 @@ function fn_click_PostMessage(){
 	formData.postid = 0;
 	formData.userid = $("#txtuserid").val();
 	formData.post = $("#txtpost").val();
-	formData.posttype = 1;
+	formData.posttype = $("input:radio[name='ridetype']:checked").val() ;
 	//console.log("formData:"+JSON.stringify(formData));
 	data.parameters = JSON.stringify(formData);
 	$.ajax({
@@ -35,6 +35,7 @@ function fn_click_PostMessage_success(data, textStatus, jqXHR){
 	console.log("fn_click_PostMessage_success:"+data);
 	if (data.result){
 		alert("add the post success"); 
+		window.location.reload(true);
 		$("#txtpost").val("");
 	}else{
 		alert("add the post failed"+data);  

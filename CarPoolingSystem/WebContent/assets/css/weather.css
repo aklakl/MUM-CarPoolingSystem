@@ -60,8 +60,8 @@
         background-color: #eee;
         text-align: left;
         cursor: pointer;
-        font-size: 10px;
-        color: blue;
+        font-size: 20px;
+        padding-left: 5px;
       }
       #info-button2 {
         position: fixed;
@@ -73,8 +73,8 @@
         background-color: #eee;
         text-align: left;
         cursor: pointer;
-        font-size: 10px;
-        color: blue;
+ 		font-size: 20px;
+        padding-left: 5px;
       }
       #infowrapper {
         border-bottom: solid darkorange 5px;
